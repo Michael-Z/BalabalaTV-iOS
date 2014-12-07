@@ -11,7 +11,7 @@
 #import "BBFileManager.h"
 
 //服务器地址
-static NSString *BASE_URL = @"http://192.168.1.116:3000/";
+static NSString *BASE_URL = @"http://tv.askeasy.cn/";
 
 @implementation BBWebService
 
