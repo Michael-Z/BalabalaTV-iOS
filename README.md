@@ -18,3 +18,6 @@ BalabalaTV-iOS
 ```bash
 bash ./bootstrap.sh
 ```
+
+####截图
+![screenshot](screenshot.gif)
