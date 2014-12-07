@@ -10,7 +10,7 @@
 #import "TVListTableViewCell.h"
 #import "BBTVListModel.h"
 #import "BBFileManager.h"
-#import "BBTVPlayerViewController.h"
+#import "BBPlayerViewController.h"
 
 @interface MainViewController ()
 
@@ -108,9 +108,15 @@
 -(void)didPlayBtnClicked:(NSNumber *)pathRow{
     BBTVListModel *model = [self.tvlistData objectAtIndex:pathRow.integerValue];
     NSArray *urlArray = model.source;
-    BBTVPlayerViewController *playerVC = [[BBTVPlayerViewController alloc]initWithContentURL:[NSURL URLWithString:[urlArray objectAtIndex:0]]];
+//    BBTVPlayerViewController *playerVC = [[BBTVPlayerViewController alloc]initWithContentURL:[NSURL URLWithString:[urlArray objectAtIndex:0]]];
+//    
+//    [self presentMoviePlayerViewControllerAnimated:playerVC];
+    NSString *url = [urlArray objectAtIndex:0];
+    BBPlayerViewController *playerVC = [[BBPlayerViewController alloc]init];
+    [playerVC setVideoURL:[NSURL URLWithString:url]];
+    [playerVC play];
     
-    [self presentMoviePlayerViewControllerAnimated:playerVC];
+    [self presentViewController:playerVC animated:YES completion:nil];
     
 }
 
