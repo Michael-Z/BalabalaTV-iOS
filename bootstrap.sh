@@ -44,6 +44,7 @@ podversion=`pod --version`>>out
 
 if [ "$podversion" = "" ]; then
 	echo "[ERROR] Please install cocopods first!"
+	exit -1;
 else
 	echo "Cocoapods version:$podversion"
 	echo ""
