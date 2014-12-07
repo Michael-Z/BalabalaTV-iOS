@@ -32,18 +32,18 @@ else
 	else
 		echo "Extract done!"
 		rm -rf MobileVLCKit.tar.gz
+		rm -rf out
 	fi
 fi
 
 
 echo "Checking Cocoapods Version...."
 
-podversion=`pod --version`
+podversion=`pod --version`>>out
 
 
 if [ "$podversion" = "" ]; then
 	echo "[ERROR] Please install cocopods first!"
-	exit -1;
 else
 	echo "Cocoapods version:$podversion"
 	echo ""
