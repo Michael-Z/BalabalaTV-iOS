@@ -35,6 +35,18 @@
     {
         //初始化内容框
         CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        NSString *sysVersion = [UIDevice currentDevice].systemVersion;
+        
+        //iOS8以下旋转屏幕时不修改长宽值
+        if(sysVersion.floatValue < 8.0f)
+        {
+            if(UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+            {
+                CGSize newScreenSize = CGSizeMake(screenSize.height, screenSize.width);
+                screenSize = newScreenSize;
+            }
+        }
+        
         _listContentView = [[UIView alloc]initWithFrame:CGRectMake(10, 10, screenSize.width-20, 107.0f)];
         _listContentView.layer.borderColor = [UIColor colorWithWhite:0.835 alpha:1.000].CGColor;
         _listContentView.layer.borderWidth = 1.0f;

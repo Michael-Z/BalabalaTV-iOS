@@ -9,7 +9,7 @@
 #import "BBPlayerControlViewController.h"
 #import "BBPlayerViewController.h"
 
-@interface BBPlayerControlViewController ()
+@interface BBPlayerControlViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong,nonatomic) UIControl *topControlView;
 @property (strong,nonatomic) UIControl *bottomControlView;
@@ -20,6 +20,8 @@
 @property (strong,nonatomic) UIButton *changeSourceBtn;
 @property (strong,nonatomic) UIButton *playStateControl;
 
+@property (strong,nonatomic) UITableView *sourceView;
+
 @end
 
 @implementation BBPlayerControlViewController
@@ -27,7 +29,14 @@
 static CGFloat TOP_CONTROL_HEIGHT = 60.0f;//顶部控件视图高度
 static CGFloat BOTTOM_CONTROL_HEIGHT = 60.0f;//底部控件视图高度
 static UIColor *CONTROL_BGCOLOR = nil;//控件视图颜色
-static CGFloat CONTROL_ALPHA = 0.9f;
+static CGFloat CONTROL_ALPHA = 0.9f;//控制视图透明度
+static CGFloat SOURCE_VIEW_WIDTH = 250.0f;//源选择视图宽度
+static CGFloat SOURCE_VIEW_HEIGHT = 200.0f;//源选择视图高度
+static UIColor *SOURCE_VIEW_BGCOLOR = nil;//源选择视图背景颜色
+static CGFloat SOURCE_VIEW_RADIUS = 5.0f;//源选择视图圆角
+static CGFloat SOURCE_VIEW_ALPHA = 0.9f;//源选择视图透明度
+
+
 
 
 #pragma mark - Life Cycle
@@ -37,6 +46,7 @@ static CGFloat CONTROL_ALPHA = 0.9f;
     if (self) {
         
         CONTROL_BGCOLOR = [UIColor colorWithWhite:0.186 alpha:1.000];
+        SOURCE_VIEW_BGCOLOR = [UIColor colorWithWhite:0.186 alpha:1.000];
         
     }
     return self;
@@ -81,7 +91,16 @@ static CGFloat CONTROL_ALPHA = 0.9f;
     _playStateControl = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     CGPoint playStateCenter = CGPointMake(_bottomControlView.bounds.size.width/2, _bottomControlView.bounds.size.height/2);
     _playStateControl.center = playStateCenter;
-    [_playStateControl setImage:[UIImage imageNamed:@"btn-pause"] forState:UIControlStateNormal];
+    
+    //根据当前播放状态显示控制按钮图标
+    if([_rootViewController.player.mediaPlayer isPlaying])
+    {
+        [_playStateControl setImage:[UIImage imageNamed:@"btn-pause"] forState:UIControlStateNormal];
+    }else
+    {
+        [_playStateControl setImage:[UIImage imageNamed:@"btn-play"] forState:UIControlStateNormal];
+    }
+    
     [_playStateControl addTarget:self action:@selector(didPlayStateControlClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomControlView addSubview:_playStateControl];
     
@@ -92,7 +111,20 @@ static CGFloat CONTROL_ALPHA = 0.9f;
     changeBtnCenter.y += 5.0f;
     _changeSourceBtn.center = changeBtnCenter;
     [_changeSourceBtn setBackgroundImage:[UIImage imageNamed:@"btn-channel"] forState:UIControlStateNormal];
+    [_changeSourceBtn addTarget:self action:@selector(didSourceViewBtnCliked) forControlEvents:UIControlEventTouchUpInside];
     [self.topControlView addSubview:_changeSourceBtn];
+    
+    //初始化源选择视图
+    _sourceView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SOURCE_VIEW_WIDTH, SOURCE_VIEW_HEIGHT)];
+    _sourceView.layer.cornerRadius = SOURCE_VIEW_RADIUS;
+    _sourceView.backgroundColor = SOURCE_VIEW_BGCOLOR;
+    _sourceView.center = _backgroundView.center;
+    _sourceView.alpha = SOURCE_VIEW_ALPHA;
+    [_sourceView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    _sourceView.hidden = YES;
+    _sourceView.delegate = self;
+    _sourceView.dataSource = self;
+    [self.view addSubview:_sourceView];
     
 }
 
@@ -121,6 +153,9 @@ static CGFloat CONTROL_ALPHA = 0.9f;
     changeBtnCenter.x = _topControlView.bounds.size.width - 40.0f;
     changeBtnCenter.y += 5.0f;
     _changeSourceBtn.center = changeBtnCenter;
+    
+    //计算旋屏后源选择视图的位置
+    _sourceView.center = _backgroundView.center;
     
 }
 
@@ -166,6 +201,8 @@ static CGFloat CONTROL_ALPHA = 0.9f;
         bottomControlCenter.y+=BOTTOM_CONTROL_HEIGHT;
         _bottomControlView.center = bottomControlCenter;
         
+        _sourceView.alpha = 0.0f;
+        
     } completion:^(BOOL finished) {
         
         [self.view removeFromSuperview];
@@ -207,5 +244,42 @@ static CGFloat CONTROL_ALPHA = 0.9f;
     
 }
 
+//直播源按钮点击事件
+-(void)didSourceViewBtnCliked{
+    
+    if(_sourceView.hidden){
+        _sourceView.hidden = NO;
+    }else
+    {
+        _sourceView.hidden = YES;
+    }
+}
+
+#pragma mark - 源选择视图控制
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _rootViewController.player.mediaList.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    cell.textLabel.text = [NSString stringWithFormat:@"直播源%ld",indexPath.row+1];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSNumber *index = [NSNumber numberWithInteger:indexPath.row];
+    [_rootViewController.player playItemAtIndex:index.intValue];
+    
+    _sourceView.hidden = YES;
+}
 
 @end

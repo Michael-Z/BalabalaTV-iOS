@@ -74,8 +74,11 @@
     //iOS8以下旋转屏幕时不修改长宽值
     if(sysVersion.floatValue < 8.0f)
     {
-        CGSize newScreenSize = CGSizeMake(screenSize.height, screenSize.width);
-        screenSize = newScreenSize;
+        if(UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+        {
+            CGSize newScreenSize = CGSizeMake(screenSize.height, screenSize.width);
+            screenSize = newScreenSize;
+        }
     }
     
     //重新设置旋转屏幕后的位置

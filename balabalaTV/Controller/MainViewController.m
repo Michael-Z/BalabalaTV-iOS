@@ -58,8 +58,11 @@
     //iOS8以下旋转屏幕时不修改长宽值
     if(sysVersion.floatValue < 8.0f)
     {
-        CGSize newScreenSize = CGSizeMake(screenSize.height, screenSize.width);
-        screenSize = newScreenSize;
+        if(UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+        {
+            CGSize newScreenSize = CGSizeMake(screenSize.height, screenSize.width);
+            screenSize = newScreenSize;
+        }
     }
     
     _tableView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
@@ -111,6 +114,7 @@
     [playerVC setVideoListURL:model.source];
     [playerVC play];
     
+    [playerVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentViewController:playerVC animated:YES completion:nil];
     
 }
