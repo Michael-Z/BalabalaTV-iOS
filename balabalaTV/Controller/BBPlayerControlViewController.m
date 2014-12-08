@@ -7,7 +7,6 @@
 //
 
 #import "BBPlayerControlViewController.h"
-#import "BBPlayerViewController.h"
 
 @interface BBPlayerControlViewController ()<UITableViewDelegate,UITableViewDataSource>
 
