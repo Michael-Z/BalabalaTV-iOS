@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F00C82941CCB86D046871E8 /* libPods-balabalaTV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FDBCB7E4337B8B7BC8DCD3 /* libPods-balabalaTV.a */; };
 		88610AE81A31E0AE001E4CD0 /* TVListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88610AE71A31E0AE001E4CD0 /* TVListTableViewCell.m */; };
+		886595F21A34ADAE0005951B /* BBPlayerControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886595F11A34ADAE0005951B /* BBPlayerControlViewController.m */; };
 		8886E21B1A31C63800F9E233 /* BBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8886E21A1A31C63800F9E233 /* BBFileManager.m */; };
 		88C5203D1A340FF600001A87 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C5203C1A340FF600001A87 /* MobileVLCKit.framework */; };
 		88C520411A34104200001A87 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C520401A34104200001A87 /* QuartzCore.framework */; };
@@ -47,6 +48,8 @@
 		563BC11BC8FA577E26062BAA /* Pods-balabalaTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-balabalaTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-balabalaTV/Pods-balabalaTV.debug.xcconfig"; sourceTree = "<group>"; };
 		88610AE61A31E0AE001E4CD0 /* TVListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TVListTableViewCell.h; path = View/TVListTableViewCell.h; sourceTree = "<group>"; };
 		88610AE71A31E0AE001E4CD0 /* TVListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TVListTableViewCell.m; path = View/TVListTableViewCell.m; sourceTree = "<group>"; };
+		886595F01A34ADAE0005951B /* BBPlayerControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPlayerControlViewController.h; path = Controller/BBPlayerControlViewController.h; sourceTree = "<group>"; };
+		886595F11A34ADAE0005951B /* BBPlayerControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPlayerControlViewController.m; path = Controller/BBPlayerControlViewController.m; sourceTree = "<group>"; };
 		8886E2191A31C63800F9E233 /* BBFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBFileManager.h; path = FileManager/BBFileManager.h; sourceTree = "<group>"; };
 		8886E21A1A31C63800F9E233 /* BBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBFileManager.m; path = FileManager/BBFileManager.m; sourceTree = "<group>"; };
 		88C5203C1A340FF600001A87 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = balabalaTV/Framework/MobileVLCKit.framework; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				88CE63B31A3086D000C7503A /* MainViewController.m */,
 				88C520541A34113600001A87 /* BBPlayerViewController.h */,
 				88C520551A34113600001A87 /* BBPlayerViewController.m */,
+				886595F01A34ADAE0005951B /* BBPlayerControlViewController.h */,
+				886595F11A34ADAE0005951B /* BBPlayerControlViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				88D1CE0C1A314610003768DF /* BBTVListModel.m in Sources */,
 				88D1CE081A314024003768DF /* BBWebService.m in Sources */,
 				88CE63B41A3086D000C7503A /* MainViewController.m in Sources */,
+				886595F21A34ADAE0005951B /* BBPlayerControlViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

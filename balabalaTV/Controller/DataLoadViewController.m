@@ -131,7 +131,7 @@
     [BBWebService connectToServer:^(NSArray *array) {
         
         //获取电视台Logo
-        [BBWebService downloadTVLogo:array withUpdate:NO];
+        [BBWebService downloadTVLogo:array withUpdate:YES];
         
         //数据加载完成
         [self performSelectorOnMainThread:@selector(didDataLoadFinish:) withObject:array waitUntilDone:NO];

@@ -107,13 +107,8 @@
 #pragma mark - 事件处理
 -(void)didPlayBtnClicked:(NSNumber *)pathRow{
     BBTVListModel *model = [self.tvlistData objectAtIndex:pathRow.integerValue];
-    NSArray *urlArray = model.source;
-//    BBTVPlayerViewController *playerVC = [[BBTVPlayerViewController alloc]initWithContentURL:[NSURL URLWithString:[urlArray objectAtIndex:0]]];
-//    
-//    [self presentMoviePlayerViewControllerAnimated:playerVC];
-    NSString *url = [urlArray objectAtIndex:0];
     BBPlayerViewController *playerVC = [[BBPlayerViewController alloc]init];
-    [playerVC setVideoURL:[NSURL URLWithString:url]];
+    [playerVC setVideoListURL:model.source];
     [playerVC play];
     
     [self presentViewController:playerVC animated:YES completion:nil];
