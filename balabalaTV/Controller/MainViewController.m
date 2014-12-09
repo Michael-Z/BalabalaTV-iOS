@@ -11,10 +11,12 @@
 #import "BBTVListModel.h"
 #import "BBFileManager.h"
 #import "BBPlayerViewController.h"
+#import "BBSetViewController.h"
 
 @interface MainViewController ()
 
 @property (strong,nonatomic) UITableView *tableView;
+@property (strong,nonatomic) BBSetViewController *settingVC;
 
 @end
 
@@ -33,7 +35,7 @@
     self.navigationItem.titleView = titleLabel;
     
     //添加设置按钮
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ico-setting"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ico-setting"] style:UIBarButtonItemStylePlain target:self action:@selector(didSetBtnClicked)];
     self.navigationItem.rightBarButtonItem = rightItem;
     
     
@@ -117,6 +119,21 @@
     [playerVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentViewController:playerVC animated:YES completion:nil];
     
+}
+
+-(void)didSetBtnClicked{
+    @synchronized(self){
+            if(!_settingVC){
+                _settingVC = [[BBSetViewController alloc]init];
+            }
+            
+            if(_settingVC.isSetDisplay){
+                [_settingVC closeSettingPage];
+            }else
+            {
+                [_settingVC showSettingPage:self];
+            }
+    }
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "BBPlayerControlViewController.h"
+#import "BBPlayerViewController.h"
 
 @interface BBPlayerControlViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -158,8 +159,8 @@ static CGFloat SOURCE_VIEW_ALPHA = 0.9f;//源选择视图透明度
     
 }
 
--(void)showPlayerControl:(BBPlayerViewController *)vc{
-    self.rootViewController = vc;
+-(void)showPlayerControl:(UIViewController *)vc{
+    self.rootViewController = (BBPlayerViewController *)vc;
     self.view.frame = vc.view.bounds;
     [vc.view addSubview:self.view];
     [vc addChildViewController:self];
@@ -208,8 +209,6 @@ static CGFloat SOURCE_VIEW_ALPHA = 0.9f;//源选择视图透明度
         [self removeFromParentViewController];
         
     }];
-    
-    NSLog(@"退出");
 }
 
 #pragma mark - 事件监听

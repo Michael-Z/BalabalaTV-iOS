@@ -32,6 +32,7 @@
 		88CE63B41A3086D000C7503A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE63B31A3086D000C7503A /* MainViewController.m */; };
 		88D1CE081A314024003768DF /* BBWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D1CE071A314024003768DF /* BBWebService.m */; };
 		88D1CE0C1A314610003768DF /* BBTVListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D1CE0B1A314610003768DF /* BBTVListModel.m */; };
+		88E020F91A36908200FDA0DC /* BBSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E020F81A36908200FDA0DC /* BBSetViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		88D1CE071A314024003768DF /* BBWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBWebService.m; path = Net/BBWebService.m; sourceTree = "<group>"; };
 		88D1CE0A1A314610003768DF /* BBTVListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBTVListModel.h; path = Model/BBTVListModel.h; sourceTree = "<group>"; };
 		88D1CE0B1A314610003768DF /* BBTVListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBTVListModel.m; path = Model/BBTVListModel.m; sourceTree = "<group>"; };
+		88E020F71A36908200FDA0DC /* BBSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBSetViewController.h; path = Controller/BBSetViewController.h; sourceTree = "<group>"; };
+		88E020F81A36908200FDA0DC /* BBSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBSetViewController.m; path = Controller/BBSetViewController.m; sourceTree = "<group>"; };
 		B2FDBCB7E4337B8B7BC8DCD3 /* libPods-balabalaTV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-balabalaTV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FDAF54E640EFEB68837553 /* Pods-balabalaTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-balabalaTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-balabalaTV/Pods-balabalaTV.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -237,6 +240,8 @@
 				88C520551A34113600001A87 /* BBPlayerViewController.m */,
 				886595F01A34ADAE0005951B /* BBPlayerControlViewController.h */,
 				886595F11A34ADAE0005951B /* BBPlayerControlViewController.m */,
+				88E020F71A36908200FDA0DC /* BBSetViewController.h */,
+				88E020F81A36908200FDA0DC /* BBSetViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				88D1CE081A314024003768DF /* BBWebService.m in Sources */,
 				88CE63B41A3086D000C7503A /* MainViewController.m in Sources */,
 				886595F21A34ADAE0005951B /* BBPlayerControlViewController.m in Sources */,
+				88E020F91A36908200FDA0DC /* BBSetViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

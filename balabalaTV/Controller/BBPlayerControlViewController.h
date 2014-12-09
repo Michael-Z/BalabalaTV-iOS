@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BBPlayerViewController.h"
 
 @interface BBPlayerControlViewController : UIViewController
 
@@ -16,7 +15,7 @@
  *
  *  @param vc rootViewController
  */
--(void)showPlayerControl:(BBPlayerViewController *)vc;
+-(void)showPlayerControl:(UIViewController *)vc;
 
 /**
  *  关闭播放控件
