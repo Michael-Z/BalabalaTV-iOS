@@ -87,7 +87,13 @@
     BBTVListModel *model = [self.tvlistData objectAtIndex:indexPath.row];
     NSString *logoFileName = [NSString stringWithFormat:@"%@.jpg",model.tvID];
     UIImage *logo =[UIImage imageWithData:[BBFileManager readDataFromFile:logoFileName withPathDirectory:NSCachesDirectory]];
-    TVListTableViewCell *cell = [[TVListTableViewCell alloc]init];
+    
+    static NSString *identifier = @"TVListCell";
+    TVListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[TVListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
     [cell setLogoImage:logo];
     [cell setTVName:model.tvName];
     [cell setSourceCount:model.source.count];
